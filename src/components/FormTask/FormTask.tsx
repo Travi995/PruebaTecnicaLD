@@ -1,15 +1,19 @@
-import { FormEvent,  useState } from "react"
+import { FormEvent,  useEffect,  useState } from "react"
 import { validateText } from "../../Services/validateText"
 import InputForm from "../InputForm/InputForm"
 import { tpAddTask } from "../../types/hooks"
 import { showAlert } from "../../Helpers/ShowAlert"
 
-const FormTask = () => {
+import useLocalStorage from "use-local-storage"
 
+const FormTask = () => {
+    
     const [data, setData] = useState<tpAddTask>({
         title:''
     })
-
+    const [dataLS, setDataLS] = useLocalStorage<tpAddTask[]>('arrayTask',[])
+    
+    
     const handleChange = (key: keyof tpAddTask, arg: string) => {
        
         setData({...data, [key]:arg})
@@ -19,18 +23,24 @@ const FormTask = () => {
         event.preventDefault()
         
         if (data.title) {
-            
+            setDataLS([...dataLS,data])
+            showAlert({icon:'success',status:200, msg:'Tarea Guardada'})
         } else {
             showAlert({icon:'error',status:400, msg:'por favor introduzca el titulo de su tarea'})
         }
-
-
     }
+
+    useEffect(() => {
+        if (data.title) {
+            setData({ 'title': '' })   
+        }  
+    },[dataLS.length])
 
     return <form className="w-max shadow-md border rounded-md " onSubmit={(event)=>handleSubmit(event)}>
         <InputForm
             label="Introduzca el nombre de su tarjeta"
             onInput={(arg) => validateText(arg)}
+            valueInput={data.title}
             onChange={(arg)=>handleChange('title',arg)}/>
         
         {/* se asume k la descripcion
@@ -40,6 +50,7 @@ const FormTask = () => {
         <InputForm
             label="Introduzca la descripcion de su tarjeta"
             onInput={(arg) => validateText(arg)}
+            valueInput={data.description}
             onChange={(arg) => handleChange('description', arg)} />
         <InputForm
             typeInput="submit"
