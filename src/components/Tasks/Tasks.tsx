@@ -10,9 +10,9 @@ const Tasks: FC<ItfTasks> = ({
     styleDescription }) => {
 
 
-    return <div className={` ${styleContainer}`}>
-        <span className={` ${styleTitle}`}>{title}</span>
-        <p className={` ${styleDescription}`}>{description}</p>
+    return <div className={` w-40 h-max shadow border mt-2 mx-2 rounded-md p-1 ${styleContainer}`}>
+        <span className={` text-lg uppercase ${styleTitle}`}>{title}</span>
+        <p className={`text-xs text-justify ${styleDescription}`}>{description}</p>
 
 
     </div>
