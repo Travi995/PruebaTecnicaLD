@@ -1,5 +1,5 @@
 import { FormEvent } from "react"
-import { tpTasks } from "../types/hooks"
+import { tpAddTask, tpTasks } from "../types/hooks"
 
 export interface ItfInputForm {
     typeInput?:string
@@ -24,8 +24,17 @@ export interface ItfBtn {
 export interface ItfTasks{
     title: string
     description?: string
-    status?: tpTasks
+    status?: tpTasks['status']
     styleContainer?: string
     styleTitle?: string
     styleDescription?:string
+}
+
+export interface itfFormTask {
+    dataLS: tpAddTask[]
+    setDataLS:(arg:tpAddTask[])=>void
+}
+
+export interface itfListTasks {
+    dataLS: tpAddTask[]
 }

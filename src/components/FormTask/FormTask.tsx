@@ -1,17 +1,18 @@
-import { FormEvent,  useEffect,  useState } from "react"
+import { FC, FormEvent,  useEffect,  useState } from "react"
 import { validateText } from "../../Services/validateText"
 import InputForm from "../InputForm/InputForm"
 import { tpAddTask } from "../../types/hooks"
 import { showAlert } from "../../Helpers/ShowAlert"
 
-import useLocalStorage from "use-local-storage"
+import { itfFormTask } from "../../interfaces/CMPGenercis"
 
-const FormTask = () => {
+const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
     
     const [data, setData] = useState<tpAddTask>({
-        title:''
+        title: '',
+        status:"active"
+        
     })
-    const [dataLS, setDataLS] = useLocalStorage<tpAddTask[]>('arrayTask',[])
     
     
     const handleChange = (key: keyof tpAddTask, arg: string) => {

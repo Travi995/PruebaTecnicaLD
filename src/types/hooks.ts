@@ -1,13 +1,15 @@
+import { tpStatusTask } from "./status"
 
 type tpAddTask = {
     title: string
-    description?:string
+    description?: string
+    status?:tpTasks['status']
 }
 
 type tpTasks = {
     title: string
     description?: string
-    status:tpTasks
+    status?:tpStatusTask['status']
 }
 
 export type {
