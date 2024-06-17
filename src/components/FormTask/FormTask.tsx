@@ -10,7 +10,8 @@ const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
     
     const [data, setData] = useState<tpAddTask>({
         title: '',
-        status:"active"
+        description:'',
+        status:"active",
         
     })
     
@@ -33,7 +34,7 @@ const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
 
     useEffect(() => {
         if (data.title) {
-            setData({ 'title': '' })   
+            setData({ 'title': '', 'description':'' })   
         }  
     },[dataLS.length])
 

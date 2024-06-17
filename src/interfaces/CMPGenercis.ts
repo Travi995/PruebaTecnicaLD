@@ -38,3 +38,12 @@ export interface itfFormTask {
 export interface itfListTasks {
     dataLS: tpAddTask[]
 }
+
+export interface itfInputSearch {
+    data: tpTasks[]
+    search: string
+    setSearch:(arg:string)=>void
+    setData: (arg: tpTasks[]) => void
+    
+    
+}

@@ -9,7 +9,7 @@ type tpAddTask = {
 type tpTasks = {
     title: string
     description?: string
-    status?:tpStatusTask['status']
+    status?:tpStatusTask['status'] | 'all'
 }
 
 export type {
