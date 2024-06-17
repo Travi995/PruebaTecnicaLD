@@ -8,3 +8,11 @@ export interface ItfInputForm {
     valueInput?:string
     
 }
+
+export interface ItfBtn {
+    styleContainer?: string
+    styleText?: string
+    text: string
+    onClick?: () => void
+    
+}
