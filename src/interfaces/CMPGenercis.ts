@@ -4,6 +4,7 @@ export interface ItfInputForm {
     label?: string
     styleLabel?: string
     styleInput?: string
-    styleContainer?:string
+    styleContainer?: string
+    valueInput?:string
     
 }
