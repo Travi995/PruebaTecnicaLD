@@ -9,6 +9,7 @@ import { itfFormTask } from "../../interfaces/CMPGenercis"
 const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
     
     const [data, setData] = useState<tpAddTask>({
+        id:Math.random() *10,
         title: '',
         description:'',
         status:"active",
@@ -34,7 +35,7 @@ const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
 
     useEffect(() => {
         if (data.title) {
-            setData({ 'title': '', 'description':'' })   
+            setData({ id:Math.random()*100, 'title': '', 'description':'' })   
         }  
     },[dataLS.length])
 

@@ -37,6 +37,7 @@ export interface itfFormTask {
 
 export interface itfListTasks {
     dataLS: tpAddTask[]
+    setDataLs:(arg:tpAddTask[])=>void
 }
 
 export interface itfInputSearch {

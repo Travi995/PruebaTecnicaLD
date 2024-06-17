@@ -8,12 +8,13 @@ const ViewportHome = () => {
 
     const [dataLS, setDataLS] = useLocalStorage<tpTasks[]>('arrayTask', [])
     
+    
 
     
     return <div className="w-screen h-screen flex flex-col justify-center items-center bg-slate-400 ">
         <FormTask dataLS={dataLS} setDataLS={(arg)=>setDataLS(arg)} />
         <FilterTasks/>
-        <ListTasks dataLS={dataLS}/>
+        <ListTasks dataLS={dataLS} setDataLs={setDataLS}/>
         
         
     </div>

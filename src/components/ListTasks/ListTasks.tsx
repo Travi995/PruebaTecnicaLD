@@ -1,11 +1,12 @@
-import { FC, useContext,  useEffect,   useState } from "react"
+import { FC, useContext,  useEffect, useState } from "react"
 import { tpTasks } from "../../types/hooks"
 import Tasks from "../Tasks/Tasks"
 import { itfListTasks } from "../../interfaces/CMPGenercis"
 import { GlobalContext } from "../../contexts/globalContext/globalContext"
 import InputSearch from "../InputSearch/InputSearch"
+import BTN from "../BTN/BTN"
 
-const ListTasks: FC<itfListTasks> = ({ dataLS }) => {
+const ListTasks: FC<itfListTasks> = ({ dataLS,setDataLs }) => {
     
     const {typeTask} = useContext(GlobalContext)
     const [data, setData] = useState<tpTasks[]>([]) 
@@ -33,14 +34,40 @@ const ListTasks: FC<itfListTasks> = ({ dataLS }) => {
             setData(elements)
         }
         else { setRefreshData(!refreshData) }
-    },[search])
+    }, [search])
+    
+    const handlerComplete = (id: number) => {
+        const reply  = [...dataLS]
+        const element = dataLS.findIndex(item => item.id === id)
+        if (element !=-1) {
+            reply[element].status ='complete'
+        }
+        setDataLs([...reply])
+    }
+
+    const deleteElement = (id: number) => {
+
+        const element = dataLS.filter((item) => {
+            if (item.id !== id) {
+                return item
+            }
+        })
+        
+       
+        setData(element)
+    }
     
     return <section className="w-2/4 mt-2 flex flex-col pb-2 border rounded-md">
         <InputSearch data={data} setData={(arg)=>setData(arg)} search={search} setSearch={(arg)=>setSearch(arg)} />
         {data?.map((item, index) => {
-            const {title,description,status} = item
+            const {id,title,description,status} = item
             
-            return <Tasks key={index} title={title} description={description}  status={status}/>
+            return <section key={index} className="flex ">
+                 <Tasks key={index} title={title} description={description} status={status} />
+                {status !== 'complete' ? <BTN styleContainer="mx-2" text="complete"  onClick={()=>handlerComplete(id)}/> : null}
+                <BTN onClick={()=>deleteElement(id)} text="Delete"  styleContainer="mx-2"/>
+                
+            </section>
         })}
         
     </section>
