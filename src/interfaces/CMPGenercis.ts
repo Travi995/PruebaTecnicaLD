@@ -1,3 +1,4 @@
+import { tpTasks } from "../types/hooks"
 
 export interface ItfInputForm {
     typeInput?:string
@@ -15,4 +16,13 @@ export interface ItfBtn {
     text: string
     onClick?: () => void
     
+}
+
+export interface ItfTasks{
+    title: string
+    description?: string
+    status?: tpTasks
+    styleContainer?: string
+    styleTitle?: string
+    styleDescription?:string
 }
