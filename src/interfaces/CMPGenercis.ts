@@ -1,3 +1,4 @@
+import { FormEvent } from "react"
 import { tpTasks } from "../types/hooks"
 
 export interface ItfInputForm {
@@ -6,7 +7,9 @@ export interface ItfInputForm {
     styleLabel?: string
     styleInput?: string
     styleContainer?: string
-    valueInput?:string
+    valueInput?: string
+    onInput?: (arg: FormEvent<HTMLInputElement>) => void
+    onChange?:(arg:string)=>void
     
 }
 

@@ -1,7 +1,17 @@
 import { FC } from "react"
 import { ItfInputForm } from "../../interfaces/CMPGenercis"
 
-const InputForm:FC<ItfInputForm> = ({label,styleInput, typeInput = 'text',valueInput,styleLabel,styleContainer}) => {
+
+
+const InputForm: FC<ItfInputForm> = ({
+    label,
+    styleInput,
+    typeInput = 'text',
+    valueInput,
+    styleLabel,
+    styleContainer,
+    onInput,
+    onChange}) => {
     
 
     return <div className={` ${styleContainer}  p-3 flex justify-between  `}>
@@ -9,7 +19,8 @@ const InputForm:FC<ItfInputForm> = ({label,styleInput, typeInput = 'text',valueI
         <input
             type={typeInput}
             value={valueInput}
-            
+            onInput={onInput}
+            onChange={(event)=>{onChange?onChange(event.target.value):null}}
             className={`border ml-4 rounded-md text-lg px-2
                                             focus-visible:outline-none 
                                             ${styleInput}`}  />
