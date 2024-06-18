@@ -63,8 +63,8 @@ const FormTask:FC<itfFormTask> = ({dataLS}) => {
             typeInput="submit"
             valueInput="Agregar"
             styleInput="text-white capitalize px-3 py-1 bg-slate-500
-                    hover:cursor-pointer  hover:bg-slate-100 hover:text-slate-500
-                    transition-all duration-250" />
+                    hover:cursor-pointer  hover:bg-slate-700 hover:border-transparent
+                    transition-all duration-200" />
 
     </form>
 }
