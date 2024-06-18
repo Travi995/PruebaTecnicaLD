@@ -15,7 +15,7 @@ const ViewportHome = () => {
     useMemo(() => {
         const element = localStorage.getItem('arrayTask')
         if (element) {
-            setDataLS(JSON.parse(element))
+            setDataLS([...JSON.parse(element)])
         }
     }, [refreshLS])
 

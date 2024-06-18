@@ -24,7 +24,7 @@ const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
         setData([...elements])
         }
 
-    }, [dataLS.length,typeTask,refreshData])
+    }, [dataLS,typeTask,refreshData])
 
     useEffect(() => {
         if (search) {
@@ -44,7 +44,7 @@ const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
         if (element !=-1) {
             reply[element].status ='complete'
         }
-        localStorage.setItem('arrayTask',JSON.stringify(reply))
+        localStorage.setItem('arrayTask',JSON.stringify([...reply]))
         setRefreshLS(!refreshLS)
     }
 
@@ -60,7 +60,7 @@ const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
         setRefreshLS(!refreshLS)
     }
     
-    return <section className="w-full flex flex-col pb-2  rounded-md ">
+    return <section className="w-full max-h-80  overflow-y-auto  flex flex-col pb-2  rounded-md ">
         <InputSearch data={data} setData={(arg)=>setData(arg)} search={search} setSearch={(arg)=>setSearch(arg)} />
         {data?.map((item, index) => {
             const {id,title,description,status} = item
