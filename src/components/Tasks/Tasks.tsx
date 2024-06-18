@@ -13,7 +13,7 @@ const Tasks: FC<ItfTasks> = ({
     
     useEffect(() => {
         if (title.length > 10) {
-            setText(title.substring(0,11)+'...')
+            setText(title.substring(0,11) + '...')
         } else {
             setText(title)
         }
@@ -21,8 +21,8 @@ const Tasks: FC<ItfTasks> = ({
     
 
 
-    return <div className={` w-40 h-max shadow border mt-2 mx-2 rounded-md p-1 ${styleContainer}
-                            ${status==='complete'? 'bg-slate-600':null}`}>
+    return <div className={`  w-full h-auto  text-gray-700   mx-2 rounded-sm  ${styleContainer}
+                            ${status==='complete'? '':null}`}>
         <span className={` text-lg uppercase ${styleTitle}`}>{text}</span>
         <p className={`text-xs text-justify ${styleDescription}`}>{description}</p>
 

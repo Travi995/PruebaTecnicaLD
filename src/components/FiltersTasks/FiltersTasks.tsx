@@ -11,10 +11,10 @@ const FilterTasks = () => {
         setTypeTask(arg)
     }
     
-    return <section className="w-max px-4 border flex  mt-2 rounded-md bg-slate-500/30">
-        <BTN text="all"     onClick={()=>handlerClick('all')} />
-        <BTN text="active"   onClick={()=>handlerClick('active')}/>
-        <BTN text="complete" onClick={()=>handlerClick('complete')}/>
+    return <section className="w-full    flex    justify-start  bg-slate-500/80 rounded-t-xl">
+        <BTN text="all"      styleContainer=" w-1/3 border-b border-c4  py-2 px-8  text-xl uppercase  rounded-tl-xl" onClick={()=>handlerClick('all')} />
+        <BTN text="active"   styleContainer=" w-1/3 border-b border-c4  py-2 px-8  text-xl uppercase border-l border-r border-c4" onClick={()=>handlerClick('active')}/>
+        <BTN text="complete" styleContainer=" w-1/3 border-b border-c4  py-2 px-8  text-xl uppercase rounded-tr-xl " onClick={()=>handlerClick('complete')}/>
 
     </section>
 } 

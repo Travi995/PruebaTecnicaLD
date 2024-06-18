@@ -60,16 +60,15 @@ const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
         setRefreshLS(!refreshLS)
     }
     
-    return <section className="w-2/4 mt-2 flex flex-col pb-2 border rounded-md">
+    return <section className="w-full flex flex-col pb-2  rounded-md ">
         <InputSearch data={data} setData={(arg)=>setData(arg)} search={search} setSearch={(arg)=>setSearch(arg)} />
         {data?.map((item, index) => {
             const {id,title,description,status} = item
             
-            return <section key={index} className="flex ">
+            return <section key={index} className="flex bg-c4 mx-1 mb-1  ">
                  <Tasks key={index} title={title} description={description} status={status} />
-                {status !== 'complete' ? <BTN styleContainer="mx-2" text="complete"  onClick={()=>handlerComplete(id)}/> : null}
-                <BTN onClick={()=>deleteElement(id)} text="Delete"  styleContainer="mx-2"/>
-                
+                {status !== 'complete' ? <BTN styleContainer="shadow-xl font-bold  rounded-sm m-2 mr-0  p-1 bg-green-500/80 " text="Complete"  onClick={()=>handlerComplete(id)}/> : null}
+                <BTN onClick={()=>deleteElement(id)} text="Delete"  styleContainer="ml-3  mx-1 w-fit  shadow-xl font-bold  rounded-sm m-2  p-1 bg-red-500/80 "/>
             </section>
         })}
         

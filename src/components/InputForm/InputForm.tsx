@@ -11,17 +11,18 @@ const InputForm: FC<ItfInputForm> = ({
     styleLabel,
     styleContainer,
     onInput,
-    onChange}) => {
+    onChange, placeholder}) => {
     
 
-    return <div className={` ${styleContainer}  p-3 flex justify-between  `}>
+    return <div className={`   flex   ${styleContainer}`}>
         <label className={`text-white shadow-teal-100  capitalize ${styleLabel}`}>{ label}</label>
         <input
             type={typeInput}
             value={valueInput}
             onInput={onInput}
+            placeholder={placeholder}
             onChange={(event)=>{onChange?onChange(event.target.value):null}}
-            className={`border ml-4 rounded-md text-lg px-2
+            className={`rounded-sm text-lg px-1 bg-c5 border-b
                                             focus-visible:outline-none 
                                             ${styleInput}`}  />
         

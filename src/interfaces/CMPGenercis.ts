@@ -8,8 +8,10 @@ export interface ItfInputForm {
     styleInput?: string
     styleContainer?: string
     valueInput?: string
+    placeholder: string 
     onInput?: (arg: FormEvent<HTMLInputElement>) => void
-    onChange?:(arg:string)=>void
+    onChange?: (arg: string) => void
+    
     
 }
 

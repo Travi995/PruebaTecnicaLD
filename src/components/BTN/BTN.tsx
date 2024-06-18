@@ -7,12 +7,11 @@ const BTN:FC<ItfBtn> = ({text,styleContainer,styleText,onClick}) => {
     const {  typeTask } = useContext(GlobalContext)
 
 
-    return <button onClick={onClick} className={`border mx-16 my-1 p-1
-                                                rounded-md text-white
-                                                hover:cursor-pointer hover:bg-slate-700 hover:border-transparent
+    return <button onClick={onClick} className={` 
+                                                hover:cursor-pointer  text-slate-200 font-light 
                                                 transition-all duration-250 ${styleContainer}
-                                                ${typeTask===text?'bg-slate-950':null}`}>
-        <span className={`uppercase text-md  ${styleText}`}>{ text}</span>
+                                                ${typeTask===text?'bg-c5 border-none':null}`}>
+        <span className={` text-md  ${styleText}`}>{ text}</span>
     </button>
 }
 
