@@ -6,7 +6,9 @@ import { GlobalContext } from "../../contexts/globalContext/globalContext"
 import InputSearch from "../InputSearch/InputSearch"
 import BTN from "../BTN/BTN"
 
-const ListTasks: FC<itfListTasks> = ({ dataLS,setDataLs }) => {
+const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
+    
+    const {refreshLS ,setRefreshLS} = useContext(GlobalContext)
     
     const {typeTask} = useContext(GlobalContext)
     const [data, setData] = useState<tpTasks[]>([]) 
@@ -16,13 +18,13 @@ const ListTasks: FC<itfListTasks> = ({ dataLS,setDataLs }) => {
     useEffect(() => {
 
         if (typeTask === 'all') {
-            setData(dataLS)
+            setData([...dataLS])
         } else {
             const elements = dataLS?.filter(item => { return item.status == typeTask })
-        setData(elements)
+        setData([...elements])
         }
 
-    }, [typeTask,refreshData])
+    }, [dataLS.length,typeTask,refreshData])
 
     useEffect(() => {
         if (search) {
@@ -42,7 +44,8 @@ const ListTasks: FC<itfListTasks> = ({ dataLS,setDataLs }) => {
         if (element !=-1) {
             reply[element].status ='complete'
         }
-        setDataLs([...reply])
+        localStorage.setItem('arrayTask',JSON.stringify(reply))
+        setRefreshLS(!refreshLS)
     }
 
     const deleteElement = (id: number) => {
@@ -53,8 +56,8 @@ const ListTasks: FC<itfListTasks> = ({ dataLS,setDataLs }) => {
             }
         })
         
-       
-        setData(element)
+        localStorage.setItem('arrayTask', JSON.stringify(element))
+        setRefreshLS(!refreshLS)
     }
     
     return <section className="w-2/4 mt-2 flex flex-col pb-2 border rounded-md">

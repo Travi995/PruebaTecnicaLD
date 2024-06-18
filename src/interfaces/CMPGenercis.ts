@@ -32,7 +32,7 @@ export interface ItfTasks{
 
 export interface itfFormTask {
     dataLS: tpAddTask[]
-    setDataLS:(arg:tpAddTask[])=>void
+    
 }
 
 export interface itfListTasks {

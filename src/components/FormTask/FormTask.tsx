@@ -1,13 +1,15 @@
-import { FC, FormEvent,  useEffect,  useState } from "react"
+import { FC, FormEvent,  useContext,  useEffect,  useState } from "react"
 import { validateText } from "../../Services/validateText"
 import InputForm from "../InputForm/InputForm"
 import { tpAddTask } from "../../types/hooks"
 import { showAlert } from "../../Helpers/ShowAlert"
 
 import { itfFormTask } from "../../interfaces/CMPGenercis"
+import { GlobalContext } from "../../contexts/globalContext/globalContext"
 
-const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
+const FormTask:FC<itfFormTask> = ({dataLS}) => {
     
+    const {refreshLS,setRefreshLS} = useContext(GlobalContext)
     const [data, setData] = useState<tpAddTask>({
         id:Math.random() *10,
         title: '',
@@ -18,7 +20,7 @@ const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
     
     
     const handleChange = (key: keyof tpAddTask, arg: string) => {
-       
+
         setData({...data, [key]:arg})
     }
 
@@ -26,7 +28,9 @@ const FormTask:FC<itfFormTask> = ({dataLS,setDataLS}) => {
         event.preventDefault()
         
         if (data.title) {
-            setDataLS([...dataLS,data])
+            
+            localStorage.setItem('arrayTask', JSON.stringify([...dataLS, { ...data }]))
+            setRefreshLS(!refreshLS)
             showAlert({icon:'success',status:200, msg:'Tarea Guardada'})
         } else {
             showAlert({icon:'error',status:400, msg:'por favor introduzca el titulo de su tarea'})
