@@ -9,7 +9,6 @@ import BTN from "../BTN/BTN"
 const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
     
     const {refreshLS ,setRefreshLS} = useContext(GlobalContext)
-    
     const {typeTask} = useContext(GlobalContext)
     const [data, setData] = useState<tpTasks[]>([]) 
     const [refreshData,setRefreshData] = useState<boolean>(false)
@@ -49,7 +48,6 @@ const ListTasks: FC<itfListTasks> = ({ dataLS}) => {
     }
 
     const deleteElement = (id: number) => {
-
         const element = dataLS.filter((item) => {
             if (item.id !== id) {
                 return item

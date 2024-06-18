@@ -1,15 +1,10 @@
 import { FC} from "react"
-// import { IoSearch as IconSearch } from "react-icons/io5";
 import InputForm from "../InputForm/InputForm";
 import { validateText } from "../../Services/validateText";
 import { itfInputSearch } from "../../interfaces/CMPGenercis";
 
 const InputSearch: FC<itfInputSearch> = ({ setSearch }) => {
-    // const [active, setActive] = useState<boolean>(false)
-
-    // const handleClick = () => {
-    //     setActive(!active)
-    // }
+    
 
     const handleChange = (arg: string) => {
         setSearch(arg)
@@ -29,13 +24,7 @@ const InputSearch: FC<itfInputSearch> = ({ setSearch }) => {
                 styleInput="max-w-40  border-b-2 bg-c5 "
             /> }
         </div>
-        {/* <div className="border  ">
-            <IconSearch
-                onClick={() => handleClick()}
-                className="text-2xl hover:cursor-pointer hove:text-c1
-                      transition-all duration-200"
-            />
-        </div> */}
+        
     </div>
 }
 

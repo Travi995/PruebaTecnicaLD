@@ -8,21 +8,19 @@ const Tasks: FC<ItfTasks> = ({
     styleContainer,
     styleTitle,
     styleDescription }) => {
-    
-    const [text,setText] = useState<string>('')
-    
+
+    const [text, setText] = useState<string>('')
+
     useEffect(() => {
         if (title.length > 10) {
-            setText(title.substring(0,11) + '...')
+            setText(title.substring(0, 11) + '...')
         } else {
             setText(title)
         }
-    },[])
-    
-
+    }, [])
 
     return <div className={`  w-full h-auto  text-gray-700   mx-2 rounded-sm  ${styleContainer}
-                            ${status==='complete'? '':null}`}>
+                            ${status === 'complete' ? '' : null}`}>
         <span className={` text-lg uppercase ${styleTitle}`}>{text}</span>
         <p className={`text-xs text-justify ${styleDescription}`}>{description}</p>
 

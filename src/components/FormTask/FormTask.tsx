@@ -18,7 +18,6 @@ const FormTask: FC<itfFormTask> = ({ dataLS }) => {
 
     })
 
-
     const handleChange = (key: keyof tpAddTask, arg: string) => {
 
         setData({ ...data, [key]: arg })
@@ -45,7 +44,6 @@ const FormTask: FC<itfFormTask> = ({ dataLS }) => {
 
     return <form className="w-full flex flex-col items-center shadow-md border rounded-md bg-c4 px-2" onSubmit={(event) => handleSubmit(event)}>
 
-
         <section className="w-4/5 flex justify-center my-[2px]">
             <InputForm
                 placeholder="Nombre"
@@ -58,7 +56,6 @@ const FormTask: FC<itfFormTask> = ({ dataLS }) => {
                 onChange={(arg) => handleChange('title', arg)} />
         </section>
 
-
         <section className="w-4/5 flex justify-center">
             <InputForm
                 placeholder="Descripcion"
@@ -68,7 +65,6 @@ const FormTask: FC<itfFormTask> = ({ dataLS }) => {
                 styleContainer="w-full justify-between  px-1 bg-c5/70"
                 styleLabel="text-lg font-light text-c1"
                 styleInput="placeholder:text-c1/60 text-slate-100"
-
                 onChange={(arg) => handleChange('description', arg)} />
         </section>
         <section className="w-4/5 flex justify-end ">
